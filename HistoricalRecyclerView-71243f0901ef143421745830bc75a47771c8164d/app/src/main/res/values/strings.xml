@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Divisas</string>
+    <string-array name="historic_event_name">
+        <item>USD</item>
+        <item>LIRA</item>
+        <item>YUAN</item>
+        <item>LIBRAS</item>
+        <item>RUPIAS</item>
+        <item>FRANCO</item>
+        <item>YEN</item>
+        <item>RUBLO</item>
+
+
+    </string-array>
+    <string-array name="historic_event_date">
+        <item>1,09</item>
+        <item>32,85</item>
+        <item>7,74</item>
+        <item>0,86</item>
+        <item>90,36</item>
+        <item>0,95</item>
+        <item>160,96</item>
+        <item>96,26</item>
+
+    </string-array>
+
+</resources>
