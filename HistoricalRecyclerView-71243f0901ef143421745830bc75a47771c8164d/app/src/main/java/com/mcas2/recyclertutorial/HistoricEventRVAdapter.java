@@ -14,14 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-
 public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRVAdapter.MyViewHolder> {
     Context context;
     ArrayList<HistoricEventModel> historicEventModels;
+    String selectedCurrency;
 
-    public HistoricEventRVAdapter(Context context, ArrayList<HistoricEventModel> historicEventModels) {
+    public HistoricEventRVAdapter(Context context, ArrayList<HistoricEventModel> historicEventModels, String selectedCurrency) {
         this.context = context;
         this.historicEventModels = historicEventModels;
+        this.selectedCurrency = selectedCurrency;
     }
 
     @NonNull
@@ -39,7 +40,8 @@ public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRV
         holder.tvName.setText(eventModel.getEventName());
         holder.tvDate.setText(eventModel.getEventDate());
         holder.ivImage.setImageResource(eventModel.getEventImage());
-        holder.setOnClickLiseteners();
+        holder.setConversionRate(eventModel.getConversionRate());
+        holder.setOnClickListeners(position);
     }
 
     @Override
@@ -47,36 +49,36 @@ public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRV
         return historicEventModels.size();
     }
 
-
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvName, tvDate;
         ImageView ivImage;
-
         Button convertir;
+        double conversionRate;
 
-        Context context;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            context = itemView.getContext();
             tvName = itemView.findViewById(R.id.eventName);
             tvDate = itemView.findViewById(R.id.eventDate);
             ivImage = itemView.findViewById(R.id.eventImage);
-
             convertir = itemView.findViewById(R.id.convertir);
-
         }
 
-        void setOnClickLiseteners(){
+        void setConversionRate(double rate) {
+            conversionRate = rate;
+        }
 
+        void setOnClickListeners(int position) {
             convertir.setOnClickListener(this);
+            convertir.setTag(position);
         }
 
         @Override
         public void onClick(View v) {
-
+            int position = (int) v.getTag();
             Intent intent = new Intent(context, Convertir.class);
+            intent.putExtra("currency", selectedCurrency);
+            intent.putExtra("position", position); // Enviar la posición como extra
             context.startActivity(intent);
         }
     }

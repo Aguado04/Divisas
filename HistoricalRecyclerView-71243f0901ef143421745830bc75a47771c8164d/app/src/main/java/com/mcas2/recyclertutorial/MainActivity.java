@@ -1,4 +1,4 @@
-    package com.mcas2.recyclertutorial;
+package com.mcas2.recyclertutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,9 +8,9 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-    public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity {
     ArrayList<HistoricEventModel> historicEventModels = new ArrayList<>();
+    String selectedCurrency = "EUR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +21,14 @@ import java.util.ArrayList;
         setHistoricEventModels();
 
         HistoricEventRVAdapter adapter = new HistoricEventRVAdapter(
-                this, historicEventModels
+                this, historicEventModels, selectedCurrency
         );
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-
-
-    private void setHistoricEventModels(){
+    private void setHistoricEventModels() {
         String[] eventNames = getResources().getStringArray(R.array.historic_event_name);
         String[] eventDates = getResources().getStringArray(R.array.historic_event_date);
         int[] eventImages = {
@@ -43,13 +41,14 @@ import java.util.ArrayList;
                 R.drawable.ic_yen,
                 R.drawable.ic_rublo
         };
-
+        String[] eventConversionRates = getResources().getStringArray(R.array.historic_event_date);
 
         for (int i = 0; i < eventNames.length; i++) {
             historicEventModels.add(new HistoricEventModel(
                     eventNames[i],
                     eventDates[i],
-                    eventImages[i]
+                    eventImages[i],
+                    eventConversionRates[i]
             ));
         }
     }
