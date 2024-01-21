@@ -17,15 +17,6 @@ import java.util.ArrayList;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Pasos
-        * 1. Creamos los arrays
-        * 2. Creamos el CardView
-        * 3. Creamos el modelo de datos
-        * 4. Instanciamos tantas clases como elementos tengan los arrays (método setUpHistoricEvents())
-        * 5. Hacemos el adaptador
-        * 6. Llamamos al adaptador
-        * */
-
         RecyclerView recyclerView = findViewById(R.id.rvEventos);
         setHistoricEventModels();
 
@@ -36,6 +27,8 @@ import java.util.ArrayList;
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+
 
     private void setHistoricEventModels(){
         String[] eventNames = getResources().getStringArray(R.array.historic_event_name);

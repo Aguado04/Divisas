@@ -1,9 +1,11 @@
 package com.mcas2.recyclertutorial;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,16 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-/*
-* Creamos una clase Adapter que extiende de RecyclerView.Adapter,
-* cuyo tipo está definida por una * clase interna que definiremos abajo
-* y que extiende de RecyclerView.ViewHolder
-*
-* Creamos un constructor al que le llegue el contexto y el array
-* de clases instanciadas del modelo.
-*
-* Construimos de abajo hacia arriba.
-* */
 
 public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRVAdapter.MyViewHolder> {
     Context context;
@@ -47,6 +39,7 @@ public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRV
         holder.tvName.setText(eventModel.getEventName());
         holder.tvDate.setText(eventModel.getEventDate());
         holder.ivImage.setImageResource(eventModel.getEventImage());
+        holder.setOnClickLiseteners();
     }
 
     @Override
@@ -54,15 +47,37 @@ public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRV
         return historicEventModels.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName, tvDate, tvLocation;
+
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView tvName, tvDate;
         ImageView ivImage;
+
+        Button convertir;
+
+        Context context;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            context = itemView.getContext();
             tvName = itemView.findViewById(R.id.eventName);
             tvDate = itemView.findViewById(R.id.eventDate);
             ivImage = itemView.findViewById(R.id.eventImage);
 
+            convertir = itemView.findViewById(R.id.convertir);
+
+        }
+
+        void setOnClickLiseteners(){
+
+            convertir.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            Intent intent = new Intent(context, Convertir.class);
+            context.startActivity(intent);
         }
     }
 }

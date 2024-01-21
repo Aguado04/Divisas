@@ -81,12 +81,13 @@
                          android:orientation="horizontal">
 
                          <Button
-                             android:id="@+id/CONVERTIR"
+                             android:id="@+id/convertir"
                              android:layout_width="0dp"
                              android:layout_height="match_parent"
                              android:layout_weight="1"
-                             android:paddingRight="20dp"
                              android:backgroundTint="#BBBBBB"
+                             android:paddingRight="20dp"
+                             android:paddingBottom="4dp"
                              android:text="CONVERTIR" />
                      </LinearLayout>
 
