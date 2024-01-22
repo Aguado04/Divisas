@@ -14,31 +14,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRVAdapter.MyViewHolder> {
+public class DivisasEventRVAdapter extends RecyclerView.Adapter<DivisasEventRVAdapter.MyViewHolder> {
     Context context;
-    ArrayList<HistoricEventModel> historicEventModels;
+    ArrayList<DivisasEventModel> divisasEventModels;
     String selectedCurrency;
 
-    public HistoricEventRVAdapter(Context context, ArrayList<HistoricEventModel> historicEventModels, String selectedCurrency) {
+    public DivisasEventRVAdapter(Context context, ArrayList<DivisasEventModel> divisasEventModels, String selectedCurrency) {
         this.context = context;
-        this.historicEventModels = historicEventModels;
+        this.divisasEventModels = divisasEventModels;
         this.selectedCurrency = selectedCurrency;
     }
 
     @NonNull
     @Override
-    public HistoricEventRVAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DivisasEventRVAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.rv_row, parent, false);
-        return new HistoricEventRVAdapter.MyViewHolder(view);
+        return new DivisasEventRVAdapter.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HistoricEventRVAdapter.MyViewHolder holder, int position) {
-        HistoricEventModel eventModel = historicEventModels.get(position);
+    public void onBindViewHolder(@NonNull DivisasEventRVAdapter.MyViewHolder holder, int position) {
+        DivisasEventModel eventModel = divisasEventModels.get(position);
 
         holder.tvName.setText(eventModel.getEventName());
-        holder.tvDate.setText(eventModel.getEventDate());
+        holder.tvPrice.setText(eventModel.getEventPrice());
         holder.ivImage.setImageResource(eventModel.getEventImage());
         holder.setConversionRate(eventModel.getConversionRate());
         holder.setOnClickListeners(position);
@@ -46,11 +46,11 @@ public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRV
 
     @Override
     public int getItemCount() {
-        return historicEventModels.size();
+        return divisasEventModels.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvName, tvDate;
+        TextView tvName, tvPrice;
         ImageView ivImage;
         Button convertir;
         double conversionRate;
@@ -59,7 +59,7 @@ public class HistoricEventRVAdapter extends RecyclerView.Adapter<HistoricEventRV
             super(itemView);
 
             tvName = itemView.findViewById(R.id.eventName);
-            tvDate = itemView.findViewById(R.id.eventDate);
+            tvPrice = itemView.findViewById(R.id.eventDate);
             ivImage = itemView.findViewById(R.id.eventImage);
             convertir = itemView.findViewById(R.id.convertir);
         }

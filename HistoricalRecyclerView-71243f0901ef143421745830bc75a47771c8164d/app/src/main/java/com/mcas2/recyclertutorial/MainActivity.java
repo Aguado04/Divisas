@@ -9,7 +9,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<HistoricEventModel> historicEventModels = new ArrayList<>();
+    ArrayList<DivisasEventModel> divisasEventModels = new ArrayList<>();
     String selectedCurrency = "EUR";
 
     @Override
@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvEventos);
         setHistoricEventModels();
 
-        HistoricEventRVAdapter adapter = new HistoricEventRVAdapter(
-                this, historicEventModels, selectedCurrency
+        DivisasEventRVAdapter adapter = new DivisasEventRVAdapter(
+                this, divisasEventModels, selectedCurrency
         );
 
         recyclerView.setAdapter(adapter);
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setHistoricEventModels() {
-        String[] eventNames = getResources().getStringArray(R.array.historic_event_name);
-        String[] eventDates = getResources().getStringArray(R.array.historic_event_date);
+        String[] eventNames = getResources().getStringArray(R.array.event_name);
+        String[] eventPrices = getResources().getStringArray(R.array.event_price);
         int[] eventImages = {
                 R.drawable.ic_dollar,
                 R.drawable.ic_lira,
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.ic_yen,
                 R.drawable.ic_rublo
         };
-        String[] eventConversionRates = getResources().getStringArray(R.array.historic_event_date);
+        String[] eventConversionRates = getResources().getStringArray(R.array.event_price);
 
         for (int i = 0; i < eventNames.length; i++) {
-            historicEventModels.add(new HistoricEventModel(
+            divisasEventModels.add(new DivisasEventModel(
                     eventNames[i],
-                    eventDates[i],
+                    eventPrices[i],
                     eventImages[i],
                     eventConversionRates[i]
             ));

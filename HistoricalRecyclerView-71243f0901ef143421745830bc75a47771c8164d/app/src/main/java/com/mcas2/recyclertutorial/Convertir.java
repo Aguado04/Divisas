@@ -36,7 +36,7 @@ public class Convertir extends AppCompatActivity {
 
         if (selectedPosition != -1) {
 
-            String[] conversionRates = getResources().getStringArray(R.array.historic_event_date);
+            String[] conversionRates = getResources().getStringArray(R.array.event_price);
             factorConversion = Double.parseDouble(conversionRates[selectedPosition]);
         }
 

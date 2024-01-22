@@ -1,14 +1,14 @@
 package com.mcas2.recyclertutorial;
 
-public class HistoricEventModel {
+public class DivisasEventModel {
     public String eventName;
-    public String eventDate;
+    public String eventPrice;
     public int eventImage;
     private double conversionRate;
 
-    public HistoricEventModel(String eventName, String eventDate, int eventImage, String conversionRate) {
+    public DivisasEventModel(String eventName, String eventPrice, int eventImage, String conversionRate) {
         this.eventName = eventName;
-        this.eventDate = eventDate;
+        this.eventPrice = eventPrice;
         this.eventImage = eventImage;
         this.conversionRate = Double.parseDouble(conversionRate);
     }
@@ -17,8 +17,8 @@ public class HistoricEventModel {
         return eventName;
     }
 
-    public String getEventDate() {
-        return eventDate;
+    public String getEventPrice() {
+        return eventPrice;
     }
 
     public int getEventImage() {
