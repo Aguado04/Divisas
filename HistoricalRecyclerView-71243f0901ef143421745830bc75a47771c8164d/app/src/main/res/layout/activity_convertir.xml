@@ -9,15 +9,10 @@
 
     <EditText
         android:id="@+id/editTextCantidad"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="243dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/textView2"
         android:hint="Ingrese la cantidad en euros"
         android:inputType="numberDecimal" />
 
@@ -25,37 +20,57 @@
         android:id="@+id/btnConvertir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="372dp"
+        android:layout_below="@+id/editTextCantidad"
+        android:layout_alignParentRight="true"
         android:backgroundTint="@color/black"
+        android:layout_marginRight="100dp"
+        android:textSize="18dp"
         android:text="Convertir" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="334dp"
-        android:layout_height="365dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+    <CheckBox
+        android:id="@+id/vip"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextCantidad"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="100dp"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:buttonTint="@color/black"
+        android:text="VIP" />
 
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="18dp"
-        app:srcCompat="@drawable/ic_euro" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="275dp"
         android:layout_height="77dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="69dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="598dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:textSize="50dp"
         android:text="DIVISAS"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="80dp"
         android:gravity="center"
         android:textStyle="italic"/>
+
+    <TextView
+        android:id="@+id/mostrar"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/btnConvertir"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="198dp"
+        android:layout_height="195dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:layout_below="@id/mostrar"
+        app:srcCompat="@drawable/ic_conversion" />
+
 </RelativeLayout>
